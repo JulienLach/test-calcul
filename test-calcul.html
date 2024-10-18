@@ -38,6 +38,29 @@
         let maitrise = [0.25, 0.50, 0.75, 1];
         let criticite = ["0 à 2", "2 à 4", "4 à 8", "8 à 16"];
 
+        // Fonction pour sauvegarder les tableaux dans le local storage
+        function sauvegarderTableaux() {
+            localStorage.setItem('frequency', JSON.stringify(frequency));
+            localStorage.setItem('gravite', JSON.stringify(gravite));
+            localStorage.setItem('maitrise', JSON.stringify(maitrise));
+        }
+
+        // Fonction pour charger les tableaux depuis le local storage
+        function chargerTableaux() {
+            if (localStorage.getItem('frequency')) {
+                frequency = JSON.parse(localStorage.getItem('frequency'));
+                document.getElementById('frequencyInput').value = frequency.join(',');
+            }
+            if (localStorage.getItem('gravite')) {
+                gravite = JSON.parse(localStorage.getItem('gravite'));
+                document.getElementById('graviteInput').value = gravite.join(',');
+            }
+            if (localStorage.getItem('maitrise')) {
+                maitrise = JSON.parse(localStorage.getItem('maitrise'));
+                document.getElementById('maitriseInput').value = maitrise.join(',');
+            }
+        }
+
         // Fonction pour afficher les tableaux
         function afficherTableaux() {
             const contentDiv = document.getElementById('content');
@@ -87,6 +110,7 @@
             recalculerCriticite();
             afficherTableaux();
             calculerRisqueMax();
+            sauvegarderTableaux();
         }
 
         // Fonction pour ajouter un échelon
@@ -117,9 +141,12 @@
             mettreAJourTableaux();
         }
 
-        // Appel des fonctions pour afficher les tableaux et calculer le risque maximum
-        afficherTableaux();
-        calculerRisqueMax();
+        // Charger les tableaux depuis le local storage au chargement de la page
+        window.onload = function() {
+            chargerTableaux();
+            afficherTableaux();
+            calculerRisqueMax();
+        };
     </script>
 </body>
 </html>
