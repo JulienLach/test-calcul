@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tableaux de Criticité</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tableaux de Criticité</h1>
+            <div id="content"></div>
+            <div class="separator"></div>
+            <h3 id="risqueMax">Risque Maximum: 0</h3>
+            <div class="separator"></div>
+
+            <h2>Fréquence d'exposition</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Fréquence</th>
+                    </tr>
+                </thead>
+                <tbody id="frequencyTableBody">
+                    <!-- Les valeurs seront insérées ici -->
+                </tbody>
+            </table>
+            <button onclick="supprimerEchelon('frequency')">
+                Supprimer Fréquence
+            </button>
+            <button onclick="ouvrirModal('frequency')">Ajouter Fréquence</button
+            ><br />
+
+            <h2>Niveau de Gravité</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Gravité</th>
+                    </tr>
+                </thead>
+                <tbody id="graviteTableBody">
+                    <!-- Les valeurs seront insérées ici -->
+                </tbody>
+            </table>
+            <button onclick="supprimerEchelon('gravite')">
+                Supprimer Gravité
+            </button>
+            <button onclick="ouvrirModal('gravite')">Ajouter Gravité</button
+            ><br />
+
+            <h2>Maîtrise</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Maîtrise</th>
+                    </tr>
+                </thead>
+                <tbody id="maitriseTableBody">
+                    <!-- Les valeurs seront insérées ici -->
+                </tbody>
+            </table>
+            <button onclick="supprimerEchelon('maitrise')">
+                Supprimer Maîtrise
+            </button>
+            <button onclick="ouvrirModal('maitrise')">Ajouter Maîtrise</button
+            ><br />
+
+            <p id="error-message" style="color: red"></p>
+        </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fermerModal()">&times;</span>
+                <h2>Ajouter une valeur</h2>
+                <input
+                    type="number"
+                    id="modalInput"
+                    placeholder="Entrez une valeur"
+                />
+                <button onclick="ajouterValeur()">Ajouter</button>
+            </div>
+        </div>
+
+        <script src="./scriptTableau.js"></script>
+    </body>
+</html>
