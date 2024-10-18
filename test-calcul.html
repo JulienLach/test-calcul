@@ -82,7 +82,7 @@
         function mettreAJourTableaux() {
             frequency = document.getElementById('frequencyInput').value.split(',').map(Number);
             gravite = document.getElementById('graviteInput').value.split(',').map(Number);
-            maitrise = document.getElementById('maitriseInput').value.split(',').map(Number).sort((a, b) => a - b);
+            maitrise = document.getElementById('maitriseInput').value.split(',').map(Number);
             document.getElementById('maitriseInput').value = maitrise.join(',');
             recalculerCriticite();
             afficherTableaux();
