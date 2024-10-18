@@ -24,7 +24,7 @@
         <button onclick="ajouterEchelon('gravite')">Ajouter Gravite</button><br>
 
         <label for="maitriseInput">Maitrise:</label>
-        <input type="text" id="maitriseInput" value="1,0.75,0.50,0.25"><br>
+        <input type="text" id="maitriseInput" value="0.25,0.50,0.75,1"><br>
         <button onclick="supprimerEchelon('maitrise')">Supprimer Maitrise</button>
         <button onclick="ajouterEchelon('maitrise')">Ajouter Maitrise</button><br>
         
@@ -82,7 +82,8 @@
         function mettreAJourTableaux() {
             frequency = document.getElementById('frequencyInput').value.split(',').map(Number);
             gravite = document.getElementById('graviteInput').value.split(',').map(Number);
-            maitrise = document.getElementById('maitriseInput').value.split(',').map(Number);
+            maitrise = document.getElementById('maitriseInput').value.split(',').map(Number).sort((a, b) => a - b);
+            document.getElementById('maitriseInput').value = maitrise.join(',');
             recalculerCriticite();
             afficherTableaux();
             calculerRisqueMax();
